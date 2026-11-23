@@ -1,0 +1,151 @@
+@import "tailwindcss";
+@source "../index.html";
+@source "../src/**/*.{js,ts,jsx,tsx}";
+
+@layer base {
+  :root {
+    --bg-midnight: #080A0E;
+    --bg-surface: #0D1117;
+    --bg-surface-elevated: #141A22;
+    --border-hairline: rgba(240, 244, 248, 0.08);
+    --border-subtle: rgba(240, 244, 248, 0.14);
+    --border-accent: rgba(0, 240, 180, 0.45);
+    --text-primary: #F0F4F8;
+    --text-secondary: #94A3B8;
+    --text-muted: #64748B;
+    --accent-cyan: #00F0B4;
+    --accent-amber: #E5A93C;
+    --accent-sky: #38BDF8;
+    --accent-violet: #A78BFA;
+  }
+
+  body {
+    background-color: #090C10;
+    color: #F0F4F8;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    background-image: 
+      radial-gradient(ellipse 80% 50% at 50% -10%, rgba(0, 240, 180, 0.03), transparent 70%);
+  }
+}
+
+/* Technical & Architectural Grid Patterns */
+.bg-tech-grid {
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.bg-tech-blueprint {
+  background-image: 
+    linear-gradient(to right, rgba(56, 189, 248, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(56, 189, 248, 0.03) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.bg-tech-dots {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 0);
+  background-size: 20px 20px;
+}
+
+/* Architectural Paper & Slate Surface Styling */
+.surface-slate {
+  background: linear-gradient(180deg, rgba(17, 24, 39, 0.6) 0%, rgba(13, 17, 23, 0.85) 100%);
+  border: 1px solid rgba(240, 244, 248, 0.08);
+  box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.4), inset 0 1px 0 0 rgba(255, 255, 255, 0.04);
+}
+
+.surface-elevated {
+  background: linear-gradient(180deg, rgba(22, 29, 39, 0.8) 0%, rgba(16, 21, 28, 0.95) 100%);
+  border: 1px solid rgba(240, 244, 248, 0.12);
+  box-shadow: 0 10px 30px -4px rgba(0, 0, 0, 0.5), inset 0 1px 0 0 rgba(255, 255, 255, 0.06);
+}
+
+/* Tactile Button Press Physics */
+.btn-tactile {
+  transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-tactile:active {
+  transform: translateY(1px) scale(0.99);
+}
+
+/* Editorial Serif Accents */
+.font-display-serif {
+  font-family: 'Instrument Serif', Georgia, serif;
+}
+
+/* Architectural Ruler & Measurement Ticks */
+.ruler-x {
+  background-image: repeating-linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.15) 0,
+    rgba(255, 255, 255, 0.15) 1px,
+    transparent 1px,
+    transparent 10px
+  );
+  height: 6px;
+}
+
+/* 3D Perspective Canvas Utilities */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+/* Animated Pulse for Signal Connectors */
+@keyframes signalPulse {
+  0% {
+    stroke-dashoffset: 40;
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0.3;
+  }
+}
+
+.animate-signal-pulse {
+  stroke-dasharray: 6 12;
+  animation: signalPulse 3s linear infinite;
+}
+
+/* Custom Minimal Scrollbars */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #080A0E;
+}
+::-webkit-scrollbar-thumb {
+  background: #1E293B;
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+/* Respect Reduced Motion Preferences */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .animate-signal-pulse {
+    animation: none !important;
+  }
+}
